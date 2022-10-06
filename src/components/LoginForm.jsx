@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthService from '../services/auth.service'
 import useAuth from '../hooks/useAuth'
-import logo from '../images/logotipo_ipn.png'
 // import { FaUserCircle } from 'react-icons/fa'
 
 const LoginForm = () => {
@@ -23,6 +22,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     // navigate('/home')
     try {
+      e.preventDefault()
       const response = await AuthService.login(
         credentials.user,
         credentials.password
@@ -42,30 +42,35 @@ const LoginForm = () => {
   }, [])
 
   return (
-    <div className='login-form'>
-      <img className='logo-login' src={logo} alt='Holas' />
-      <h2 style={{ marginTop: '0' }}>Bienvenido</h2>
-      <div className='form'>
-        {/* <FaUserCircle style={{ color: '#6c1d45', fontSize: '15px' }} /> */}
-        <input
-          type='text'
-          placeholder='Usuario'
-          name='user'
-          value={credentials.user}
-          onChange={(e) => handleChange(e)}
-        />
-        <input
-          type='password'
-          placeholder='Password'
-          name='password'
-          value={credentials.password}
-          onChange={(e) => handleChange(e)}
-        />
-        <button className='btn-enviar' onClick={(e) => handleSubmit(e)}>
-          Login
-        </button>
+    <>
+      <div class='login-container'>
+        <div class='login-info-container'>
+          <h1 class='title'>Log in with</h1>
+          <form class='inputs-container'>
+            <input
+              class='input'
+              type='text'
+              placeholder='Username'
+              name='user'
+              value={credentials.user}
+              onChange={(e) => handleChange(e)}
+            />
+            <input
+              class='input'
+              type='password'
+              placeholder='Password'
+              name='password'
+              value={credentials.password}
+              onChange={(e) => handleChange(e)}
+            />
+            <button class='btn' onClick={(e) => handleSubmit(e)}>
+              login
+            </button>
+          </form>
+        </div>
+        <img class='image-container' src='images/login.svg' alt='' />
       </div>
-    </div>
+    </>
   )
 }
 

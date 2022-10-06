@@ -1,17 +1,26 @@
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import Login from './pages/Login'
-import Layout from './pages/Layout'
+// import Layout from './pages/Layout'
+import CrearProducto from './pages/CrearProducto'
+import EditarProducto from './pages/EditarProducto'
+import Carrito from './pages/Carrito'
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Layout />}>
+    <div className='App'>
+      <Routes>
+        {/* <Route path='/' element={<Layout />}> */}
         {/* Rutas Publicas */}
-        <Route exact path='login' element={<Login />} />
-        <Route exact path='home' element={<HomePage />} />
-      </Route>
-    </Routes>
+        <Route exact path='/' element={<Login />} />
+        <Route exact path='/home' element={<HomePage />} />
+        <Route exact path='/addProduct' element={<CrearProducto />} />
+        <Route exact path='/updateProduct/:id' element={<EditarProducto />} />
+        <Route exact path='/shopping' element={<Carrito />} />
+
+        {/* </Route> */}
+      </Routes>
+    </div>
   )
 }
 
